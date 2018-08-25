@@ -1,0 +1,20 @@
+{
+  "name": "Promises-Async-Await-Callbacks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrstevedev/Promises-Async-Await-Callbacks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrstevedev/Promises-Async-Await-Callbacks/issues"
+  },
+  "homepage": "https://github.com/mrstevedev/Promises-Async-Await-Callbacks#readme"
+}
