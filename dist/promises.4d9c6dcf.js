@@ -104,11 +104,57 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"promises.js":[function(require,module,exports) {
+var posts = [{ title: 'Post Four', body: 'This is post four' }, { title: 'Post Five', body: 'This is post five' }];
+
+function getPosts() {
+  setTimeout(function () {
+    output = '';
+    posts.forEach(function (post, index) {
+      output += '<li>' + post.title + '</li>';
+    });
+    document.body.innerHTML = output;
+  }, 1000);
+}
+
+function createPost(post) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      posts.push(post);
+      var err = false;
+      if (!err) {
+        resolve();
+      } else {
+        reject('Error something went wrong');
+      }
+    }, 2000);
+  });
+}
+
+// async function init() {
+//   await createPost({ title: 'Post Six', body: 'This is post six' });
+//
+//   getPosts();
+// }
+// init();
+
+// Async / Await Fetch
+// async function fetchUsers() {
+//   const res = await fetch('http://jsonplaceholder.typicode.com/photos');
+//
+//   const data = await res.json();
+//   console.log(data);
+// }
+//
+// fetchUsers();
+
+createPost({ title: 'Post Six', body: 'This is post six' }).then(getPosts).catch(function (err) {
+  return console.log(err);
+});
 
 var promise1 = Promise.resolve('Hello World');
 var promise2 = 10;
 var promise3 = new Promise(function (resolve, reject) {
-  return setTimeout(resolve, 4000, 'Goodbye');
+  return setTimeout(resolve, 1000, 'Goodbye');
 });
 var promise4 = fetch('http://jsonplaceholder.typicode.com/photos').then(function (res) {
   return res.json();
@@ -150,7 +196,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '61498' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '51302' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
